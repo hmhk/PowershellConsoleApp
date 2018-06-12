@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Reference Include="System.Management.Automation">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll</HintPath>
+      <HintPath>bin\Debug\net45\System.Management.Automation.dll</HintPath>
     </Reference>
   </ItemGroup>
 

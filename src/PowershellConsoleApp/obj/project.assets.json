@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Data\\SourceCode\\vsProject\\PowershellConsoleApp\\PowershellConsoleApp\\PowershellConsoleApp.csproj",
+      "projectUniqueName": "C:\\Data\\SourceCode\\vsProject\\PowershellConsoleApp\\src\\PowershellConsoleApp\\PowershellConsoleApp.csproj",
       "projectName": "PowershellConsoleApp",
-      "projectPath": "C:\\Data\\SourceCode\\vsProject\\PowershellConsoleApp\\PowershellConsoleApp\\PowershellConsoleApp.csproj",
+      "projectPath": "C:\\Data\\SourceCode\\vsProject\\PowershellConsoleApp\\src\\PowershellConsoleApp\\PowershellConsoleApp.csproj",
       "packagesPath": "C:\\Users\\hkrtf\\.nuget\\packages\\",
-      "outputPath": "C:\\Data\\SourceCode\\vsProject\\PowershellConsoleApp\\PowershellConsoleApp\\obj\\",
+      "outputPath": "C:\\Data\\SourceCode\\vsProject\\PowershellConsoleApp\\src\\PowershellConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
