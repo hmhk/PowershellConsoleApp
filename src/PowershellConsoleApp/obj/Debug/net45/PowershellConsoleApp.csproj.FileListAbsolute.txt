@@ -1,0 +1,10 @@
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\bin\Debug\net45\PowershellConsoleApp.exe
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\bin\Debug\net45\PowershellConsoleApp.pdb
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.csproj.CoreCompileInputs.cache
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.AssemblyInfoInputs.cache
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.AssemblyInfo.cs
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.exe
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.pdb
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\bin\Debug\net45\System.Management.Automation.dll
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.csproj.CopyComplete
+C:\Data\SourceCode\vsProject\PowershellConsoleApp\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.csprojAssemblyReference.cache
