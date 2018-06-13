@@ -17,3 +17,11 @@ C:\Data\SourceCode\vsProject\PowershellConsoleApp\src\PowershellConsoleApp\obj\D
 C:\Data\SourceCode\vsProject\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.csproj.CopyComplete
 C:\Data\SourceCode\vsProject\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.exe
 C:\Data\SourceCode\vsProject\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.pdb
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\bin\Debug\net45\PowershellConsoleApp.exe
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\bin\Debug\net45\PowershellConsoleApp.pdb
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.AssemblyInfoInputs.cache
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.AssemblyInfo.cs
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.csproj.CopyComplete
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.exe
+C:\Users\Administrator\Source\Repos\PowershellConsoleApp\src\PowershellConsoleApp\obj\Debug\net45\PowershellConsoleApp.pdb
