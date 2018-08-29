@@ -37,7 +37,16 @@ namespace PowershellConsoleApp
             }
 
             */
+            //config
+            sourceBasePath_appSetting = ConfigurationManager.AppSettings["sourceBasePath"];            
+            destBasePath_appSetting = ConfigurationManager.AppSettings["destBasePath"];
             
+            if (string.IsNullOrWhiteSpace(sourceBasePath_appSetting) || string.IsNullOrWhiteSpace(destBasePath_appSetting))
+            {
+                throw new ConfigurationException("app config is error!");
+            }
+            destBasePath_appSetting += "_new" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
+
             Process p = new Process();            
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;            
@@ -52,7 +61,7 @@ namespace PowershellConsoleApp
                 string line = p.StandardOutput.ReadLine();
                 if (!string.IsNullOrEmpty(line))
                 {
-                    stdOutput.Append(XCopy(line) + "\n");
+                    stdOutput.Append(XCopy(destBasePath_appSetting, destBasePath_appSetting,line) + "\n");
                 }
             }
             p.Close();
@@ -62,18 +71,9 @@ namespace PowershellConsoleApp
         }
 
         #region " XCopy "
-
-        public static string newFolder = "_new" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
-        private static string XCopy(string line)
+        
+        private static string XCopy(string sourceBasePath_appSetting, string destBasePath_appSetting,string line)
         {
-            string sourceBasePath_appSetting = ConfigurationManager.AppSettings["sourceBasePath"];
-            string destBasePath_appSetting = ConfigurationManager.AppSettings["destBasePath"];
-            if (string.IsNullOrWhiteSpace(sourceBasePath_appSetting) || string.IsNullOrWhiteSpace(destBasePath_appSetting))
-            {
-                throw new ConfigurationException("app config is error!");
-            }
-            destBasePath_appSetting += newFolder;
-
             //string str="xcopy \"{0}\" \"{1}\" /E  \r\n"; //Copies all subdirectories, even if they are empty
             string str = "xcopy \"{0}\" \"{1}\" /S  \r\n"; //Copies directories and subdirectories, unless they are empty
 
@@ -85,5 +85,8 @@ namespace PowershellConsoleApp
         }
 
         #endregion
+
+        public static string sourceBasePath_appSetting = null;
+        public static string destBasePath_appSetting = null;
     }
 }
