@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Management.Automation">
       <HintPath>bin\Debug\net45\System.Management.Automation.dll</HintPath>
     </Reference>

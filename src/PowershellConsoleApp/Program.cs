@@ -2,6 +2,9 @@
 using System.Management.Automation;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Text;
+using System.Diagnostics;
+using System.Configuration;
 
 namespace PowershellConsoleApp
 {
@@ -9,12 +12,13 @@ namespace PowershellConsoleApp
     {
         static void Main(string[] args)
         {
+            /*
             // create a new instance of the PowerShell class
             PowerShell ps = PowerShell.Create();
 
             // use "AddScript" to add the contents of a script file to the end of the execution pipeline.
             // use "AddParameter" to add a single parameter to the last command/script on the pipeline.
-            ps.AddScript("param($param1) get-childitem -Path $param1 -Attributes !Directory+!ReadOnly -exclude *.dll,*.pdb -recurse -force");            
+            ps.AddScript("param($param1) get-childitem -Path $param1 -Attributes !Directory+!ReadOnly -exclude *.dll,*.pdb -recurse -force | Select Name");            
             ps.AddParameter("param1", @""); 
 
             // invoke execution on the pipeline (collecting output)
@@ -27,42 +31,57 @@ namespace PowershellConsoleApp
                 // object may be present here. check for null to prevent potential NRE.
                 if (outputItem != null)
                 {
-                    //TODO: do something with the output item 
-                    //Console.WriteLine(outputItem.BaseObject.GetType().FullName);
-                    //Console.WriteLine(outputItem.BaseObject.ToString() + "\n");
+                    //TODO: do something with the output item                     
                     allLines[i++] = outputItem.BaseObject.ToString();
                 }
             }
-            XCopy(allLines);
+
+            */
+            
+            Process p = new Process();            
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;            
+            p.StartInfo.FileName = "cmd.exe";
+            //p.StartInfo.Arguments = "/K dir /A:-D-R /s /b | findstr /v /i \"\\.exe$\" | findstr /v  /i \"\\.pdb\"";
+            p.StartInfo.Arguments = "/C dir /A:-D-R /s /b | findstr /v /i \"\\.exe$\" | findstr /v  /i \"\\.pdb\"";
+            p.Start();
+
+            StringBuilder stdOutput = new StringBuilder();
+            while (!p.StandardOutput.EndOfStream)
+            {
+                string line = p.StandardOutput.ReadLine();
+                if (!string.IsNullOrEmpty(line))
+                {
+                    stdOutput.Append(XCopy(line) + "\n");
+                }
+            }
+            p.Close();
+
+            XCopy xp = new XCopy(stdOutput.ToString());
             Console.ReadLine();
         }
 
         #region " XCopy "
-        private static void XCopy(string[] AllLines)
+
+        public static string newFolder = "_new" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
+        private static string XCopy(string line)
         {
-            //string[] AllLines = new string[1];
-            string sourceBasePath = @"D:\Project\ASP.NET\VS2010\AdampakErp\ErpWebUi\";
-            string sourceBasePath_appSetting = "";// ConfigurationManager.AppSettings["sourceBasePath"];
-            if (!string.IsNullOrWhiteSpace(sourceBasePath_appSetting))
+            string sourceBasePath_appSetting = ConfigurationManager.AppSettings["sourceBasePath"];
+            string destBasePath_appSetting = ConfigurationManager.AppSettings["destBasePath"];
+            if (string.IsNullOrWhiteSpace(sourceBasePath_appSetting) || string.IsNullOrWhiteSpace(destBasePath_appSetting))
             {
-                sourceBasePath = sourceBasePath_appSetting;
+                throw new ConfigurationException("app config is error!");
             }
-            string destBasePath = @"C:\Users\Administrator\Desktop\new_" + DateTime.Now.ToString("yyyyMMdd_mmss") ;// this._TempText;
+            destBasePath_appSetting += newFolder;
 
             //string str="xcopy \"{0}\" \"{1}\" /E  \r\n"; //Copies all subdirectories, even if they are empty
             string str = "xcopy \"{0}\" \"{1}\" /S  \r\n"; //Copies directories and subdirectories, unless they are empty
 
-            string dest = "";
-            string re = "";
+            string relativePath = line.Replace(sourceBasePath_appSetting, "");
+            relativePath = relativePath.Substring(0, relativePath.LastIndexOf('\\') + 1);
 
-            foreach (var s in AllLines)
-            {
-                string temp = s.Replace(sourceBasePath, "");
-                temp = temp.Substring(0, temp.LastIndexOf('\\') + 1);//保留"\"
-                dest = Path.Combine(destBasePath, temp);
-                re += string.Format(str, s.Trim(), dest);
-            }
-            XCopy xp = new XCopy(re);
+            string destFolder = Path.Combine(destBasePath_appSetting, relativePath) + "\\";
+            return string.Format(str, line.Trim(), destFolder);
         }
 
         #endregion
