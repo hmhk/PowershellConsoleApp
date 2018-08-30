@@ -61,7 +61,7 @@ namespace PowershellConsoleApp
                 string line = p.StandardOutput.ReadLine();
                 if (!string.IsNullOrEmpty(line))
                 {
-                    stdOutput.Append(XCopy(destBasePath_appSetting, destBasePath_appSetting,line) + "\n");
+                    stdOutput.Append(XCopy(sourceBasePath_appSetting, destBasePath_appSetting,line) + "\n");
                 }
             }
             p.Close();
